@@ -18,12 +18,11 @@ services:
     delay: 10s
   image: mysql:5
   networks:
-   - docker-network
+   - docker-network  
   environment:
    - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=dockerrestdatabase
-  deploy:
-   replicas: 1    
+   - MYSQL_DATABASE=dockerrestdatabase 
+  deploy: 
    restart_policy:
     condition: on-failure
     max-attempts: 3
