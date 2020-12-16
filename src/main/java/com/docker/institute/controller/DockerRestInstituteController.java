@@ -42,5 +42,10 @@ public class DockerRestInstituteController {
 		instructorService.deleteInstructorById(instructorId);
 		return new ResponseEntity<String>("Deleted", HttpStatus.OK);
 	}
+	
+	@GetMapping
+	public ResponseEntity<Iterable<Instructor>> getAllInstructors(){
+	   return new ResponseEntity<>(instructorService.getAllInstructors(), HttpStatus.OK);	
+	}
 		
 }
