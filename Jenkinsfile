@@ -70,7 +70,9 @@ pipeline {
                   }
              } 
              post {
-                  echp 'docker image pushed to hub successfully'
+                 success {
+                     echo 'docker image pushed to hub successfully' 
+                 }                  
              }                 
         }
 
