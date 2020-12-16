@@ -1,7 +1,7 @@
 version: "3"
 services:
  docker-restapp:
-  image: anilkamatham/dockerrestapp:39
+  image: anilkamatham/dockerrestapp:40
   networks:
    - docker-network
   ports:
