@@ -47,7 +47,7 @@ pipeline {
              steps {
                   echo 'Building docker image ...'
                   sh "cd ${env.TEMP_DOCKER_DIRECTORY}"
-                  sh "docker image -t ${env.DOCKER_HUB_USER_NAME}/${env.DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ."  
+                  sh "docker image build -t ${env.DOCKER_HUB_USER_NAME}/${env.DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ."  
              }
              post {
                  success {
