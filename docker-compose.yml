@@ -1,0 +1,35 @@
+version: "3"
+services:
+ docker-restapp:
+  image: anilkamatham/dockerrestapp:27
+  networks:
+   - docker-network
+  ports:
+   - '8090: 8090'
+  deploy:
+   replicas: 2
+   restart_policy: 
+    condition: on-failure
+    max_attempts: 3
+    delay: 5s
+    window: 120s
+   update_config:
+    parallelism: 1
+    delay: 10s
+  image: mysql:5
+  networks:
+   - docker-network
+  environment:
+   - MYSQL_ROOT_PASSWORD=root
+   - MYSQL_DATABASE=dockerrestdatabase 
+  restart_policy:
+   condition: on-failure
+   max-attempts: 3
+   delay: 5s
+   window: 120s
+  update_config:
+   parallelism: 1
+   delay: 10s          
+networks:
+ docker-network:
+ 
