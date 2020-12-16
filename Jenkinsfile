@@ -51,7 +51,7 @@ pipeline {
                         sh "docker image build -t ${env.DOCKER_HUB_USER_NAME}/${env.DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ."                          
                   }     
                   echo 'removing temp directory...'
-                  sh "rm -R ${env.TEMP_DOCKER_DIRECTORY}"                                   
+                  sh "rm -R ${env.TEMP_DOCKER_DIRECTORY}*"                                   
              }
              post {
                  success {
@@ -68,10 +68,10 @@ pipeline {
                      sh "docker login -u${env.DOCKER_HUB_USER_NAME} -p${dockerSecretPassword}"
                      sh "docker image push ${env.DOCKER_HUB_USER_NAME}/${env.DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}"
                   }
+             } 
              post {
                   echp 'docker image pushed to hub successfully'
-             }      
-        }    
+             }                 
         }
 
     }
