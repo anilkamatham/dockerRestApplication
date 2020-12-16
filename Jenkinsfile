@@ -3,7 +3,7 @@ pipeline {
         label 'docker-slave'
     }
     parameters { 
-        string(name: 'docker-dev', defaultValue:'', description: 'deploying institute application to docker dev environemnt')
+        string(name: 'docker-dev', defaultValue:'65.0.71.180', description: 'deploying institute application to docker dev environemnt')
     }
     environment {
         TEMP_DOCKER_DIRECTORY= "dockerartifacts"
@@ -24,8 +24,8 @@ pipeline {
             }
             post {
                 success {
-                    echo 'Archieve artifacts...'
-                    archievArtifacts artifacts: '**/target/*.jar'
+                    echo 'Archieve artifacts...'                    
+                    archiveArtifacts artifacts: '**/target/*.jar'
                 }
                 failure {
                     echo 'build failed...'
