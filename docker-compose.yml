@@ -5,7 +5,7 @@ services:
   networks:
    - docker-network
   ports:
-   - '8090: 8090'
+   - '8090:8090'
   deploy:
    replicas: 2
    restart_policy: 
@@ -16,6 +16,7 @@ services:
    update_config:
     parallelism: 1
     delay: 10s
+ database:   
   image: mysql:5
   networks:
    - docker-network  
