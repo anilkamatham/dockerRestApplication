@@ -21,15 +21,17 @@ services:
    - docker-network
   environment:
    - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=dockerrestdatabase 
-  restart_policy:
-   condition: on-failure
-   max-attempts: 3
-   delay: 5s
-   window: 120s
-  update_config:
-   parallelism: 1
-   delay: 10s          
+   - MYSQL_DATABASE=dockerrestdatabase
+  deploy:
+   replicas: 1    
+   restart_policy:
+    condition: on-failure
+    max-attempts: 3
+    delay: 5s
+    window: 120s
+   update_config:
+    parallelism: 1
+    delay: 10s          
 networks:
  docker-network:
  
