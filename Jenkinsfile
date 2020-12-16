@@ -79,7 +79,7 @@ pipeline {
             steps {                  
                  sshagent(['docker-swarm-master']){                    
                      sh 'scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@52.66.172.85:/usr/local/bin/docker-swarm-workloads'
-                     sh "ssh -o StrictHostKeyChecking=no -t ec2-user@52.66.172.85  'cd /usr/local/bin/docker-swarm-workloads | docker stack deploy -c docker-compose.yml docker-restapp-stack'"
+                     sh "ssh -o StrictHostKeyChecking=no -t ec2-user@52.66.172.85  'cd /usr/local/bin/docker-swarm-workloads ; bash | docker stack deploy -c docker-compose.yml docker-restapp-stack'"
                  }
             }
             post {
